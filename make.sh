@@ -5,7 +5,7 @@
 
 VMDIR=$PWD
 MACHINE="$(qemu-system-x86_64 --machine help | grep q35 | cut -d" " -f1 | grep -Eoe ".*-[0-9.]+" | sort -rV | head -1)"
-OUT="template.xml"
+OUT="macOS.xml"
 
 print_usage() {
     echo
@@ -21,7 +21,7 @@ error() {
 }
 
 generate(){
-    sed -e "s|VMDIR|$VMDIR|g" -e "s|MACHINE|$MACHINE|g" tools/template.xml.in > $OUT
+    sed -e "s|VMDIR|$VMDIR|g" -e "s|MACHINE|$MACHINE|g" tools/template.xml > $OUT
     echo "$OUT has been generated in $VMDIR"
 }
 

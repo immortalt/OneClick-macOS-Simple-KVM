@@ -1,6 +1,6 @@
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
-  <name>macOS-Simple-KVM</name>
-  <uuid>d06d502a-904a-4b34-847d-debf1a3d76c7</uuid>
+  <name>macOS</name>
+  <uuid>d06d502a-904a-4b34-847d-debf1a3d76c8</uuid>
   <memory unit='KiB'>2097152</memory>
   <currentMemory unit='KiB'>2097152</currentMemory>
   <vcpu placement='static'>4</vcpu>
@@ -68,11 +68,11 @@
     <controller type='sata' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
     </controller>
-    <interface type='network'>
-      <mac address='52:54:00:92:d4:7b'/>
-      <source network='default'/>
-      <model type='e1000-82545em'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    <interface type="bridge">
+      <mac address="52:54:00:e6:85:40"/>
+      <source bridge="virbr0"/>
+      <model type="vmxnet3"/>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x00" function="0x0"/>
     </interface>
     <serial type='pty'>
       <target type='isa-serial' port='0'>
@@ -93,7 +93,7 @@
       <image compression='off'/>
     </graphics>
     <video>
-      <model type='qxl' ram='65536' vram='65536' vgamem='16384' heads='1' primary='yes'/>
+      <model type='qxl' ram='65536' vram='65536' vgamem='65536' heads='1' primary='yes'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
     </video>
     <redirdev bus='usb' type='spicevmc'>
